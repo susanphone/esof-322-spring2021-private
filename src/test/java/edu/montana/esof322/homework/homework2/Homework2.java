@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 public class Homework2 {
 
     int invocationCount = 0;
-    StringBuilder output = new StringBuilder();
+    static StringBuilder output = new StringBuilder();
 
     interface IDoAThing{}
 
@@ -27,6 +27,7 @@ public class Homework2 {
         IDoAThing proxyObject;
         public ThingProxy(IDoAThing proxyObj) {
             proxyObject = proxyObj;
+            invocationCount++;
         }
     }
 
