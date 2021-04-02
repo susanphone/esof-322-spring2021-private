@@ -10,9 +10,23 @@ public class Homework2 {
     int invocationCount = 0;
     StringBuilder output = new StringBuilder();
 
-    class ThingDoer {
-        void doIt() {
-            output.append("Did it!\n");
+    interface IDoAThing{}
+
+    static class ThingDoer implements IDoAThing{
+        void doIt() {output.append("Did it!\n");
+        }
+    }
+    private static class ThingFactory {
+        private ThingFactory(){}
+        public static IDoAThing create() {
+            ThingDoer thing = new ThingDoer();
+            return new ThingDoer();
+        }
+    }
+    class ThingProxy implements IDoAThing {
+        IDoAThing proxyObject;
+        public ThingProxy(IDoAThing proxyObj) {
+            proxyObject = proxyObj;
         }
     }
 
@@ -25,13 +39,22 @@ public class Homework2 {
     void theAssignment() {
         // Step 1: extract an interface for ThingDoer, IDoAThing and
         //         replace the variable below with
-
+        public void extractAnInterface() {
+            IDoAThing thing = new ThingDoer();
+        }
         // Step 2: replace this new expression with a factory to produce
         //         IDoAThings
+        public void createAFactory() {
+            IDoAThing thing = ThingFactory.create();
+        }
         ThingDoer thingDoer = new ThingDoer();
 
         // Step 3: use the factory to insert a proxy object that wraps
         //         a ThingDoer and increments the invocationCount
+
+        public void makeAThingProxy() {
+            IDoAThing thing = new ThingProxy(new ThingDoer());
+        }
         assertFalse(thingDoer instanceof ThingDoer);
 
         // do the thing a few times...
@@ -47,6 +70,7 @@ public class Homework2 {
         assertEquals(output.toString(),
                 "Did it!\nDid it!\nDid it!\n");
     }
+
 
 
 }
