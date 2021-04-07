@@ -25,6 +25,7 @@ public class Homework2 {
     }
     class ThingProxy implements IDoAThing {
         IDoAThing proxyObject;
+        // need to proxy the doIt() method
         public ThingProxy(IDoAThing proxyObj) {
             proxyObject = proxyObj;
             invocationCount++;
