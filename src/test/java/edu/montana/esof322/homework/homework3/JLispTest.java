@@ -37,15 +37,14 @@ public class JLispTest {
     @Test
     // This is a sample test to help you get started
     public void exampleTest() {
-        int t=3;
-        assertEquals(t, 3);
-//        fail("test didn't pass");
-//        assertEquals("Foo", "Bar");
+        assertEquals(2, 3);
+        fail("test didn't pass");
+        assertEquals("Foo", "Bar");
     }
 
 
     @Test
-    public void nullEvalThrowsWrongExceptionTest() {
+    public void nullEvalThrowsNullPointerExceptionTest() {
         JLisp jlisp = new JLisp();
         try {
             jlisp.eval(null);
@@ -71,7 +70,7 @@ public class JLispTest {
 
 
     @Test
-    public void noParenthesesThrowError() {
+    public void noParenthesesThrowsExceptionTest() {
         JLisp jl = new JLisp();
         try{
             jl.eval("+ 1 2");
@@ -94,7 +93,7 @@ public class JLispTest {
     }
 
     @Test
-    public void multipleAddersThrowsError() {
+    public void multipleAddersThrowsWrongExceptionTest() {
         JLisp jlisp = new JLisp();
         try {
             jlisp.eval("(+ + 1)");
