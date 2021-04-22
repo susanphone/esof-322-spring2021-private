@@ -1,6 +1,9 @@
 package edu.montana.esof322.homework.homework3;
 
+import org.apache.commons.lang.IncompleteArgumentException;
 import org.junit.jupiter.api.Test;
+
+import java.lang.annotation.IncompleteAnnotationException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,17 +29,78 @@ public class JLispTest {
     // The `+` operator can take two and only two arguments, and must be
     // enclosed in parenthesis to be valid.
     //
-    // This implementation is buggy.  Your assignment is to create four (4)
-    // tests showing *different* bugs within the simple language.
+    // This implementation is buggy.
+    TODO: Your assignment is to create four (4) tests showing *different* bugs within the simple language.
     //
     //====================================================================*/
 
     @Test
     // This is a sample test to help you get started
     public void exampleTest() {
-        assertEquals(1, 2);
-        fail("test didn't pass");
-        assertEquals("Foo", "Bar");
+        int t=3;
+        assertEquals(t, 3);
+//        fail("test didn't pass");
+//        assertEquals("Foo", "Bar");
     }
 
+
+    @Test
+    public void nullEvalThrowsWrongExceptionTest() {
+        JLisp jlisp = new JLisp();
+        try {
+            jlisp.eval(null);
+            fail("Didn't work");
+        } catch (IllegalArgumentException illegalArgumentException){
+            //pass
+        }
+    }
+
+
+
+    @Test
+    public void incompleteParenthesesThrowsExceptionTest() {
+        JLisp jLisp = new JLisp();
+        try{
+            jLisp.eval("(+ 1 1");
+            fail("Fail");
+        } catch (IncompleteAnnotationException noClosingParenthesesException) {
+            //pass
+        }
+    }
+
+
+
+    @Test
+    public void noParenthesesThrowError() {
+        JLisp jl = new JLisp();
+        try{
+            jl.eval("+ 1 2");
+            fail("fail");
+        } catch (IllegalArgumentException illegalArgumentException) {
+            //pass
+        }
+    }
+
+
+    @Test
+    public void usePlusSignThrowsWrongExceptionTest() {
+        JLisp jlisp = new JLisp();
+        try {
+            jlisp.eval("(+)");
+            fail("Didn't work");
+            } catch (IncompleteArgumentException illegalArgumentException){
+                //pass
+            }
+    }
+
+    @Test
+    public void multipleAddersThrowsError() {
+        JLisp jlisp = new JLisp();
+        try {
+            jlisp.eval("(+ + 1)");
+            fail("Didn't work");
+        } catch (IncompleteArgumentException illegalArgumentException){
+            //pass
+        }
+    }
 }

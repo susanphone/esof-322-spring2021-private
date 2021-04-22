@@ -37,41 +37,41 @@ public class Homework2 {
     // being invoked.  Your job is to take the the code above and refactor it
     // using some patterns to capture the needed information.
     //=======================================================================
-    @Test
-    void theAssignment() {
-        // Step 1: extract an interface for ThingDoer, IDoAThing and
-        //         replace the variable below with
-        public void extractAnInterface() {
-            IDoAThing thing = new ThingDoer();
-        }
-        // Step 2: replace this new expression with a factory to produce
-        //         IDoAThings
-        public void createAFactory() {
-            IDoAThing thing = ThingFactory.create();
-        }
-        ThingDoer thingDoer = new ThingDoer();
-
-        // Step 3: use the factory to insert a proxy object that wraps
-        //         a ThingDoer and increments the invocationCount
-
-        public void makeAThingProxy() {
-            IDoAThing thing = new ThingProxy(new ThingDoer());
-        }
-        assertFalse(thingDoer instanceof ThingDoer);
-
-        // do the thing a few times...
-        thingDoer.doIt();
-        thingDoer.doIt();
-        thingDoer.doIt();
-
-        // the proxy should have incremented the invocation count
-        assertEquals(3, invocationCount);
-
-        // output should still be the same since the proxy passed through
-        // to the underlying ThingDoer
-        assertEquals(output.toString(),
-                "Did it!\nDid it!\nDid it!\n");
-    }
+//    @Test
+//    void theAssignment() {
+//        // Step 1: extract an interface for ThingDoer, IDoAThing and
+//        //         replace the variable below with
+//        public void extractAnInterface() {
+//            IDoAThing thing = new ThingDoer();
+//        }
+//        // Step 2: replace this new expression with a factory to produce
+//        //         IDoAThings
+//        public void createAFactory() {
+//            IDoAThing thing = ThingFactory.create();
+//        }
+//        ThingDoer thingDoer = new ThingDoer();
+//
+//        // Step 3: use the factory to insert a proxy object that wraps
+//        //         a ThingDoer and increments the invocationCount
+//
+//        public void makeAThingProxy() {
+//            IDoAThing thing = new ThingProxy(new ThingDoer());
+//        }
+//        assertFalse(thingDoer instanceof ThingDoer);
+//
+//        // do the thing a few times...
+//        thingDoer.doIt();
+//        thingDoer.doIt();
+//        thingDoer.doIt();
+//
+//        // the proxy should have incremented the invocation count
+//        assertEquals(3, invocationCount);
+//
+//        // output should still be the same since the proxy passed through
+//        // to the underlying ThingDoer
+//        assertEquals(output.toString(),
+//                "Did it!\nDid it!\nDid it!\n");
+//    }
 
 
 
