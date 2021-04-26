@@ -86,7 +86,7 @@ public class JLispTest {
         JLisp jlisp = new JLisp();
         try {
             jlisp.eval("(+)");
-            fail("Didn't work");
+            fail("Didn't work"); // better error messages here will help
             } catch (IncompleteArgumentException illegalArgumentException){
                 //pass
             }
